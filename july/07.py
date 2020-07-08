@@ -11,6 +11,7 @@ The island doesn't have "lakes" (water inside that isn't connected to the water 
 class Solution:
     def islandPerimeter(self, grid: List[List[int]]) -> int:
         self.ans = 0
+        flag = False
         self.g = grid
         self.visited = [[False] * len(grid[0]) for _ in range(len(grid))]
         for i in range(len(grid)):
@@ -18,6 +19,8 @@ class Solution:
                 if grid[i][j] == 1:
                     self.traverse(i,j)
                     break
+            if flag:
+                break
         return self.ans
     
     def traverse(self, i,j):
