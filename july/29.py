@@ -36,3 +36,6 @@ class Solution:
                     return cache[i]
         res = max(helper(len(prices)-1), 0)
         return res
+"""
+Solution Approach - Dynamic Programming. (Explore all possiblities).
+"""
