@@ -18,11 +18,11 @@ Output:
 """
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
-        if len(s) > 100: # for avoiding TLE
-            return []
         if len(s) == 1:
             return [s] if s in wordDict else []
         d = set(wordDict)
+        if any(map(lambda x: x not in set("".join(d)), set(s))): # when there is one char in s which not present in any word in d.
+            return []
         res = set()
         seen = set()
         def helper(l,r, wordlist):
@@ -47,3 +47,6 @@ class Solution:
             helper(l,r+1,wordlist)
         helper(0,0,[])
         return [" ".join(el) for el in res]
+"""
+Solution Approach - DP with memoization. element of choice - if a word is in dictionary, we can either include it in our answer, or look for future words.
+"""
